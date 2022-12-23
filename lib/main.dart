@@ -81,15 +81,7 @@ class homepage extends StatelessWidget {
               ),
               child: const Text('Login'),
             ),
-            ElevatedButton(
-              onPressed: () {},
-              style: ElevatedButton.styleFrom(
-                backgroundColor: Colors.redAccent,
-                foregroundColor: Colors.white,
-                minimumSize: const Size(200, 40),
-              ),
-              child: const Text('Register'),
-            )
+            
           ],
         ),
       ),

@@ -31,6 +31,7 @@ class _LoginpageState extends State<Loginpage> {
       appBar: AppBar(
         title: Text("Login"),
       ),
+      backgroundColor: Color.fromARGB(255, 221, 221, 221),
       body: Container(
         padding: const EdgeInsets.all(20),
         child: Center(
@@ -41,11 +42,23 @@ class _LoginpageState extends State<Loginpage> {
                 Form(
                   key: _formkey,
                   child: Column(children: [
-                    Icon(Icons.people),
+                    Icon(
+                      Icons.people,
+                      size: 50,
+                      color: Colors.black,
+                    ),
+                    const SizedBox(
+                      height: 25,
+                    ),
                     Padding(
-                      padding: const EdgeInsets.all(25.0),
+                      padding: const EdgeInsets.symmetric(horizontal: 20.0),
                       child: TextFormField(
                         decoration: const InputDecoration(
+                          enabledBorder: OutlineInputBorder(
+                            borderSide: BorderSide(color: Colors.black12),
+                          ),
+                          fillColor: Color.fromARGB(255, 255, 255, 255),
+                          filled: true,
                           labelText: 'Username',
                           icon: Icon(Icons.people_alt),
                         ),
@@ -61,11 +74,19 @@ class _LoginpageState extends State<Loginpage> {
                         onSaved: (value) => username = value,
                       ),
                     ),
+                    SizedBox(
+                      height: 20,
+                    ),
                     Padding(
-                      padding: const EdgeInsets.all(25.0),
+                      padding: const EdgeInsets.symmetric(horizontal: 20.0),
                       child: TextFormField(
                         obscureText: _isObscured,
                         decoration: InputDecoration(
+                          enabledBorder: OutlineInputBorder(
+                            borderSide: BorderSide(color: Colors.black12),
+                          ),
+                          fillColor: Color.fromARGB(255, 255, 255, 255),
+                          filled: true,
                           suffixIcon: IconButton(
                             icon: _isObscured
                                 ? Icon(Icons.visibility)
@@ -93,19 +114,37 @@ class _LoginpageState extends State<Loginpage> {
                         //obscureText = true,
                       ),
                     ),
-                    ElevatedButton(
-                      onPressed: () {
-                        if (_formkey.currentState!.validate()) {
-                          _formkey.currentState!.save();
-                          Navigator.of(context).push(
-                            MaterialPageRoute(builder: (BuildContext context) {
-                              return const Setet();
-                            }),
-                          );
-                        }
-                      },
-                      child: const Text("Login"),
+                    Padding(
+                      padding: const EdgeInsets.all(25.0),
+                      child: ElevatedButton(
+                        onPressed: () {
+                          if (_formkey.currentState!.validate()) {
+                            _formkey.currentState!.save();
+                            Navigator.of(context).push(
+                              MaterialPageRoute(
+                                  builder: (BuildContext context) {
+                                return const Setet();
+                              }),
+                            );
+                          }
+                        },
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: Colors.black,
+                          foregroundColor: Colors.white,
+                          minimumSize: const Size(200, 40),
+                        ),
+                        child: const Text("Sign In"),
+                      ),
                     ),
+                    ElevatedButton(
+                      onPressed: () {},
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Colors.redAccent,
+                        foregroundColor: Colors.white,
+                        minimumSize: const Size(200, 40),
+                      ),
+                      child: const Text('Register'),
+                    )
                   ]),
                 ),
               ],
