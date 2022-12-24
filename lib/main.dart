@@ -1,3 +1,4 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application/pages/LoginPage.dart';
 import 'package:flutter_application/pages/pages1.dart';
@@ -7,8 +8,10 @@ import 'package:google_fonts/google_fonts.dart';
 import 'Theme/thempate_fonts.dart';
 import 'package:flutter_application/pages/selet.dart';
 
-void main() {
-  runApp(const MyApp());
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -21,7 +24,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         //fontFamily: GoogleFonts.kanit().fontFamily,
-        primarySwatch: Colors.red,
+        primarySwatch: Colors.blue,
       ),
       home: const homepage(),
     );
@@ -30,7 +33,6 @@ class MyApp extends StatelessWidget {
 
 class homepage extends StatelessWidget {
   const homepage({super.key});
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -64,7 +66,7 @@ class homepage extends StatelessWidget {
               height: 200,
             ),
             const SizedBox(
-              height: 20,
+              height: 40,
             ),
             ElevatedButton(
               onPressed: () {
@@ -75,13 +77,14 @@ class homepage extends StatelessWidget {
                 );
               },
               style: ElevatedButton.styleFrom(
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(35.0)),
                 backgroundColor: Colors.white,
                 foregroundColor: Colors.red,
-                minimumSize: const Size(200, 40),
+                minimumSize: const Size(200, 50),
               ),
               child: const Text('Login'),
             ),
-            
           ],
         ),
       ),
